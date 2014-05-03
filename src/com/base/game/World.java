@@ -2,6 +2,9 @@ package com.base.game;
 
 import java.util.ArrayList;
 
+import org.lwjgl.util.vector.Vector2f;
+import org.lwjgl.util.vector.Vector3f;
+
 public class World {
 	private Player player;
 	private ArrayList<Chunk> worldChunks;
@@ -23,14 +26,14 @@ public class World {
 			ch.render();
 	}
 	
-	public void addChunk(){
-		worldChunks.add(new Chunk());
+	public void addChunk(long x, long z){
+		worldChunks.add(new Chunk(x, z));
 	}
 	
 	public Player getPlayer() {
 		return player;
 	}
-
+	
 	public void setPlayer(Player player) {
 		this.player = player;
 	}
