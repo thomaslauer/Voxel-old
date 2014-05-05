@@ -1,6 +1,8 @@
 package com.base.game;
 
 import org.lwjgl.util.vector.Vector2f;
+
+
 import org.lwjgl.util.vector.Vector3f;
 
 import com.base.game.blocks.BlockStone;
@@ -31,11 +33,14 @@ public class Chunk {
 	}
 	
 	public void update(){
-		
 	}
 	
 	public void render(){
 		Render.chunk(this);
+	}
+	
+	public Block getLocalBlock(Vector3f localPosition){
+		return blocks[(int) localPosition.x][(int) localPosition.z][(int) localPosition.y];
 	}
 	
 	public Block[][][] getBlocks(){

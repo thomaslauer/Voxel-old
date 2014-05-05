@@ -20,7 +20,6 @@ public class Game {
 	public void start(World world){
 		this.world = world;
 		world.addChunk(0, 0);
-		world.addChunk(1, 0);
 		world.getPlayer().position.z = -10;
 		gameLoop();
 	}
