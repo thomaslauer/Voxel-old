@@ -11,17 +11,17 @@ public class Player extends Entity{
 	
 	public void update(){
 		if(Input.getKey(Input.KEY_W))
-			moveZ(0.03f);
+			moveZ(0.05f);
 		if(Input.getKey(Input.KEY_S))
-			moveZ(-0.03f);
+			moveZ(-0.05f);
 		if(Input.getKey(Input.KEY_A))
-			moveX(0.03f);
+			moveX(0.05f);
 		if(Input.getKey(Input.KEY_D))
-			moveX(-0.03f);
+			moveX(-0.05f);
 		if(Input.getKey(Input.KEY_SPACE))
-			moveY(-0.03f);
+			moveY(-0.05f);
 		if(Input.getKey(Input.KEY_LSHIFT))
-			moveY(0.03f);
+			moveY(0.05f);
 		camera.update();
 	}
 	

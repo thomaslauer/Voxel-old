@@ -1,53 +1,46 @@
 package com.base.game;
 
+import org.lwjgl.util.vector.Vector2f;
+
+
+import org.lwjgl.util.vector.Vector3f;
+
 import com.base.game.blocks.BlockStone;
+import com.base.game.render.Render;
 
 
 public class Chunk {
 	public Block[][][] blocks;
 	
-	public Chunk(){
+	public Vector2f position;
+	
+	
+	public Chunk(long x, long z){
+		
+		this.position = new Vector2f(x, z);
+		
 		blocks = new Block[16][16][16]; //not like normal, it is x, z, y
-//		int x = 0, z = 0, y = 0;
 		
 		
-		for(int x = 0; x < 16; x++){
-			for(int z = 0; z < 16; z++){
-				for(int y = 0; y < 16; y++){
-					blocks[x][z][y] = new BlockStone(x, z, y);
-					System.out.println("x: " + x + " z: " + z + " y: " + y);
+		for(int bx = 0; bx < 16; bx++){
+			for(int bz = 0; bz < 16; bz++){
+				for(int by = 0; by < 16; by++){
+					blocks[bx][bz][by] = new BlockStone(bx, bz, by);
+					System.out.println("x: " + bx + " z: " + bz + " y: " + by);
 				}
 			}
 		}
-		
-		
-//		while(x < 16){
-//			while(z < 16){
-//				while(y < 16){
-//					blocks[x][z][y] = new BlockStone(x, z, y);
-//					y++;
-//					System.out.println(y);
-//				}
-//				z++;
-//				
-//			}
-//			x++;
-//		}
 	}
 	
 	public void update(){
-		
 	}
 	
 	public void render(){
-		for(int x = 0; x < 16; x++){
-			for(int z = 0; z < 16; z++){
-				for(int y = 0; y < 16; y++){
-					blocks[x][z][y].render();
-					//System.out.println("x: " + x + " z: " + z + " y: " + y);
-				}
-			}
-		}
+		Render.chunk(this);
+	}
+	
+	public Block getLocalBlock(Vector3f localPosition){
+		return blocks[(int) localPosition.x][(int) localPosition.z][(int) localPosition.y];
 	}
 	
 	public Block[][][] getBlocks(){
