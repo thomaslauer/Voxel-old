@@ -4,6 +4,7 @@ import static org.lwjgl.opengl.GL11.*;
 
 import org.lwjgl.opengl.Display;
 
+import com.base.game.render.TextureMap;
 import com.base.game.render.Window;
 
 public class Game {
@@ -14,6 +15,7 @@ public class Game {
 	public Game(int width, int height, String title){
 		Window.initWindow(width, height, title);
 		Window.initProjection(70, (float)Window.getWidth()/(float)Window.getHeight(), 0.1f, 1000);
+		TextureMap.init("TextureMap.png");
 	}
 	
 	public void start(World world){
