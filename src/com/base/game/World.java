@@ -29,7 +29,7 @@ public class World {
 	}
 	
 	public void addChunk(long x, long z){
-		worldChunks.put(new Vector2f(x, z), new Chunk(x, z));
+		worldChunks.put(new Vector2f(x, z), new Chunk(new Vector2f(x, z)));
 	}
 	
 	public Player getPlayer() {

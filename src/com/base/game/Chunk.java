@@ -8,7 +8,12 @@ import com.base.game.blocks.BlockStone;
 public class Chunk {
 	public Block[][][] blocks;
 	
-	public Chunk(){
+	public Vector2f position;
+	
+	public Chunk(Vector2f position){
+		
+		this.position = position;
+		
 		blocks = new Block[16][16][16]; //not like normal, it is x, z, y
 
 		for(int x = 0; x < 16; x++){
