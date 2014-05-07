@@ -8,6 +8,6 @@ public class BlockStone extends Block{
 
 	public BlockStone(long x, long y, long z) {
 		super(x, y, z);
-		setTexture(new Vector2f(0, 0));
+		setTexture(new Vector2f(0, 1));
 	}
 }

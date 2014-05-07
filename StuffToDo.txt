@@ -1,8 +1,7 @@
 1. CHUNK MANAGMENT
-	a. store in a 3d array												DONE
-	b. generate a basic world
-	c. make helpful commands to get relative blocks
-	d. update the faces that need to be rendered
+	a. generate a basic world
+	b. make helpful commands to get relative blocks
+	c. update the faces that need to be rendered
 		i. only when the chunk has an update to save performance
 2. RENDERING
 	a. dont render on the inside of blocks (needs chunks)

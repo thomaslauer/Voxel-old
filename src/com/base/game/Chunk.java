@@ -1,5 +1,7 @@
 package com.base.game;
 
+import org.lwjgl.util.vector.Vector2f;
+
 import com.base.game.blocks.BlockStone;
 
 
@@ -8,13 +10,11 @@ public class Chunk {
 	
 	public Chunk(){
 		blocks = new Block[16][16][16]; //not like normal, it is x, z, y
-//		int x = 0, z = 0, y = 0;
-		
+
 		for(int x = 0; x < 16; x++){
 			for(int z = 0; z < 16; z++){
 				for(int y = 0; y < 16; y++){
-					blocks[x][z][y] = new BlockStone(x, z, y);
-					System.out.println("x: " + x + " z: " + z + " y: " + y);
+					blocks[x][z][y] = new BlockStone(x, z, y).setTexture(new Vector2f(1, 0));
 				}
 			}
 		}
@@ -29,7 +29,6 @@ public class Chunk {
 			for(int z = 0; z < 16; z++){
 				for(int y = 0; y < 16; y++){
 					blocks[x][z][y].render();
-					//System.out.println("x: " + x + " z: " + z + " y: " + y);
 				}
 			}
 		}

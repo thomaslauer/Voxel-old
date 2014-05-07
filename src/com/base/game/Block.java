@@ -9,7 +9,7 @@ import com.base.game.render.Render;
 public abstract class Block {
 	public Vector3f position;
 	
-	public Vector2f texture = null;
+	public Vector2f texture = new Vector2f(0, 0);
 	
 	public Block(long x, long y, long z){
 		position = new Vector3f(x, y, z);
