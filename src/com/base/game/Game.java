@@ -3,6 +3,7 @@ package com.base.game;
 import static org.lwjgl.opengl.GL11.*;
 
 import org.lwjgl.opengl.Display;
+import org.lwjgl.util.vector.Vector2f;
 
 import com.base.game.render.TextureMap;
 import com.base.game.render.Window;
@@ -20,7 +21,7 @@ public class Game {
 	
 	public void start(World world){
 		this.world = world;
-		world.addChunk();
+		world.addChunk(0, 0);
 		world.getPlayer().position.z = -10;
 		gameLoop();
 	}

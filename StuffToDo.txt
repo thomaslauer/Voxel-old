@@ -5,3 +5,4 @@
 		i. only when the chunk has an update to save performance
 2. RENDERING
 	a. dont render on the inside of blocks (needs chunks)
+	b. use a texture map
