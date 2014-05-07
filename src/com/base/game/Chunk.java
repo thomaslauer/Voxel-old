@@ -26,7 +26,7 @@ public class Chunk {
 	}
 	
 	public void update(){
-		
+		updateVisibility();
 	}
 	
 	public void render(){
@@ -34,6 +34,65 @@ public class Chunk {
 			for(int z = 0; z < 16; z++){
 				for(int y = 0; y < 16; y++){
 					blocks[x][z][y].render();
+				}
+			}
+		}
+	}
+	
+	public void updateVisibility(){
+		for(int x = 0; x < 16; x++){
+			for(int z = 0; z < 16; z++){
+				for(int y = 0; y < 16; y++){
+					
+//					System.out.println("x: " + x + " z: " + z + " y: " + y);
+					
+					if(x != 15){
+						if(blocks[x + 1][z][y].isSolid){
+							blocks[x][z][y].faceRender.xup = false;
+						}else{
+							blocks[x][z][y].faceRender.xup = true;
+						}
+					}
+					
+					if(z != 15){
+						if(blocks[x][z + 1][y].isSolid){
+							blocks[x][z][y].faceRender.zup = false;
+						}else{
+							blocks[x][z][y].faceRender.zup = true;
+						}
+					}
+					
+					if(y != 15){	
+						if(blocks[x][z][y + 1].isSolid){
+							blocks[x][z][y].faceRender.yup = false;
+						}else{
+							blocks[x][z][y].faceRender.yup = true;
+						}
+					}
+					
+					if(x != 0){
+						if(blocks[x - 1][z][y].isSolid){
+							blocks[x][z][y].faceRender.xdown = false;
+						}else{
+							blocks[x][z][y].faceRender.xdown = true;
+						}
+					}
+					
+					if(z != 0){
+						if(blocks[x][z - 1][y].isSolid){
+							blocks[x][z][y].faceRender.zdown = false;
+						}else{
+							blocks[x][z][y].faceRender.zdown = true;
+						}
+					}
+					
+					if(y != 0){
+						if(blocks[x][z][y - 1].isSolid){
+							blocks[x][z][y].faceRender.ydown = false;
+						}else{
+							blocks[x][z][y].faceRender.ydown = true;
+						}
+					}
 				}
 			}
 		}

@@ -8,6 +8,6 @@ public class Main {
 	
 	public static void main(String args[]){
 		Game g = new Game(WIDTH, HEIGHT, TITLE);
-		g.start(new World());
+		g.start();
 	}
 }

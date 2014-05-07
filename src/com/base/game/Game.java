@@ -11,16 +11,16 @@ import com.base.game.render.Window;
 public class Game {
 	public boolean isRunning;
 	
-	public World world;
+	public static World world;
 	
 	public Game(int width, int height, String title){
+		world = new World();
 		Window.initWindow(width, height, title);
 		Window.initProjection(70, (float)Window.getWidth()/(float)Window.getHeight(), 0.1f, 1000);
 		TextureMap.init("TextureMap.png");
 	}
 	
-	public void start(World world){
-		this.world = world;
+	public void start(){
 		world.addChunk(0, 0);
 		world.getPlayer().position.z = -10;
 		gameLoop();
