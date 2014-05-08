@@ -29,6 +29,7 @@ public class Render {
 		float a = x + TextureMap.textureMapScale;
 		float b = y + TextureMap.textureMapScale;
 		
+		FaceRender fr = block.faceRender;
 		
 		glPushMatrix();
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
@@ -36,6 +37,65 @@ public class Render {
 		glTranslatef(block.position.x, block.position.y, block.position.z);
 		glBegin(GL_QUADS);
 		{
+			if(fr.zdown){
+				glTexCoord2f(x,b); glVertex3f(0,0,1);
+				glTexCoord2f(a,b); glVertex3f(1,0,1);
+				glTexCoord2f(a,y); glVertex3f(1,1,1);
+				glTexCoord2f(x,y); glVertex3f(0,1,1);
+			}
+			if(fr.zup){
+				glTexCoord2f(a,b); glVertex3f(0,0,0);
+				glTexCoord2f(a,y); glVertex3f(0,1,0);
+				glTexCoord2f(x,y); glVertex3f(1,1,0);
+				glTexCoord2f(x,b); glVertex3f(1,0,0);
+			}
+			if(fr.xdown){
+				glTexCoord2f(x,b); glVertex3f(0,0,0);
+				glTexCoord2f(a,b); glVertex3f(0,0,1);
+				glTexCoord2f(a,y); glVertex3f(0,1,1);
+				glTexCoord2f(x,y); glVertex3f(0,1,0);
+			}
+			if(fr.xup){
+				glTexCoord2f(a,b); glVertex3f(1,0,0);
+				glTexCoord2f(x,b); glVertex3f(1,0,1);
+				glTexCoord2f(x,y); glVertex3f(1,1,1);
+				glTexCoord2f(a,y); glVertex3f(1,1,0);
+			}
+			if(fr.ydown){
+				glTexCoord2f(x,y); glVertex3f(0,0,0);
+				glTexCoord2f(a,y); glVertex3f(1,0,0);
+				glTexCoord2f(a,b); glVertex3f(1,0,1);
+				glTexCoord2f(x,b); glVertex3f(0,0,1);
+			}
+			if(fr.yup){
+				glTexCoord2f(x,y); glVertex3f(0,1,0);
+				glTexCoord2f(a,y); glVertex3f(1,1,0);
+				glTexCoord2f(a,b); glVertex3f(1,1,1);
+				glTexCoord2f(x,b); glVertex3f(0,1,1);
+			}
+		}
+		glEnd();
+		//block.texture.release(); //is this needed?
+		glPopMatrix();
+	}
+public static void blockTest(Block block){
+		
+		TextureMap.bind();
+		
+		float x = block.getTexture().getX() * TextureMap.textureMapScale;
+		float y = block.getTexture().getY() * TextureMap.textureMapScale;
+		float a = x + TextureMap.textureMapScale;
+		float b = y + TextureMap.textureMapScale;
+		
+		FaceRender fr = block.faceRender;
+		
+		glPushMatrix();
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+		glTranslatef(block.position.x, block.position.y, block.position.z);
+		glBegin(GL_QUADS);
+		{
+			
 			glTexCoord2f(x,b); glVertex3f(0,0,1);
 			glTexCoord2f(a,b); glVertex3f(1,0,1);
 			glTexCoord2f(a,y); glVertex3f(1,1,1);

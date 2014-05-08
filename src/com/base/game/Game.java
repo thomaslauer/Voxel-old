@@ -22,7 +22,7 @@ public class Game {
 	
 	public void start(){
 		world.addChunk(0, 0);
-		world.getPlayer().position.z = -10;
+		world.getPlayer().position.z = -1;
 		gameLoop();
 	}
 	
