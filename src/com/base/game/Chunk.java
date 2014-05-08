@@ -72,12 +72,12 @@ public class Chunk {
 					
 					if(y != 15){	
 						if(blocks[x][z][y + 1].isSolid){
-							blocks[x][z][y].faceRender.zup = false;
+							blocks[x][z][y].faceRender.zdown = false;
 						}else{
-							blocks[x][z][y].faceRender.zup = true;
+							blocks[x][z][y].faceRender.zdown = true;
 						}
 					}else{
-						blocks[x][z][y].faceRender.zup = true;
+						blocks[x][z][y].faceRender.zdown = true;
 					}
 					
 					if(x != 0){
@@ -102,12 +102,12 @@ public class Chunk {
 					
 					if(y != 0){
 						if(blocks[x][z][y - 1].isSolid){
-							blocks[x][z][y].faceRender.zdown = false;
+							blocks[x][z][y].faceRender.zup = false;
 						}else{
-							blocks[x][z][y].faceRender.zdown = true;
+							blocks[x][z][y].faceRender.zup = true;
 						}
 					}else{
-						blocks[x][z][y].faceRender.zdown = true;
+						blocks[x][z][y].faceRender.zup = true;
 					}
 				}
 			}
