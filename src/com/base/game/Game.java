@@ -29,11 +29,21 @@ public class Game {
 	public void gameLoop(){
 		isRunning = true;
 		
+		long fps = 0;
+		long lastFPS = Time.getTime();
+		
 		while(isRunning){
 			input();
 			update();
 			render();
-			Display.sync(60);
+			//Display.sync(60);
+			
+			if(Time.getTime() - lastFPS > 1000){
+				System.out.println("FPS: " + fps);
+				fps = 0;
+				lastFPS += 1000;
+			}
+			fps++;
 			
 			if(Window.isCloseRequested())
 				isRunning = false;
