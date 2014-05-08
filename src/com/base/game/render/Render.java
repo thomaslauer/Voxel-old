@@ -26,8 +26,8 @@ public class Render {
 		
 		float x = block.getTexture().getX() * TextureMap.textureMapScale;
 		float y = block.getTexture().getY() * TextureMap.textureMapScale;
-		float a = x + TextureMap.textureMapScale;
-		float b = y + TextureMap.textureMapScale;
+		float a = x + TextureMap.textureMapScale - 0.0001f;
+		float b = y + TextureMap.textureMapScale - 0.0001f;
 		
 		FaceRender fr = block.faceRender;
 		

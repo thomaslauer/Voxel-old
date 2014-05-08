@@ -5,8 +5,6 @@ import java.util.Map;
 
 import org.lwjgl.util.vector.Vector2f;
 
-import com.base.game.render.TextureMap;
-
 public class World {
 	private Player player;
 	private HashMap<Vector2f, Chunk> worldChunks;

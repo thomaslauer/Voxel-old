@@ -3,7 +3,6 @@ package com.base.game;
 import static org.lwjgl.opengl.GL11.*;
 
 import org.lwjgl.opengl.Display;
-import org.lwjgl.util.vector.Vector2f;
 
 import com.base.game.render.TextureMap;
 import com.base.game.render.Window;
@@ -36,7 +35,7 @@ public class Game {
 			input();
 			update();
 			render();
-			//Display.sync(60);
+			Display.sync(60);
 			
 			if(Time.getTime() - lastFPS > 1000){
 				System.out.println("FPS: " + fps);
