@@ -1,24 +1,21 @@
 package com.base.game.update;
 
-import com.base.game.Game;
-import com.base.game.Time;
+import com.base.game.*;
 
-public class UpdateJob {
-
+public class UpdateJob implements Runnable{
+	
 	public Game game;
 	
-	public int ticksPerSecond = 20;
-	public float tickTime = (float)1/ticksPerSecond;
-	
-	public UpdateJob(Game game) {
+	public UpdateJob(Game game){
 		this.game = game;
 	}
-
 	public void run(){
 		startUpdateLoop();
 	}
 	
-	public void startUpdateLoop(){
-		
+	private void startUpdateLoop(){
+		while(game.isRunning){
+			game.update();
+		}
 	}
 }
