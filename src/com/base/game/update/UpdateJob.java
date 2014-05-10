@@ -16,15 +16,26 @@ public class UpdateJob implements Runnable{
 	}
 	
 	private long lastLoopTime = Time.getTime();
-	private final int TARGET_FPS = 20;
+	private final int TARGET_FPS = 60;
 	private final long OPTIMAL_TIME = Time.SECOND / TARGET_FPS;
 	
 	private void startUpdateLoop(){
 		
+		@SuppressWarnings("unused")
 		long fps = 0;
 		long lastFPS = Time.getTime();
 		
+		int tickCount = 0;
+		
 		while(game.isRunning){
+			game.input();
+			game.update();
+			
+			tickCount++;
+			if(tickCount >= 3){
+				game.tick();
+				tickCount = 0;
+			}
 			
 			
 			long now = Time.getTime();
