@@ -34,15 +34,17 @@ public class UpdateJob implements Runnable{
 			
 			Time.setDeltaTime((long) delta);
 			
+			game.tick();
+			
 			if(Time.getTime() - lastFPS > 1000){
-				System.out.println("TPS: " + fps);
+//				System.out.println("TPS: " + fps);
 				fps = 0;
 				lastFPS += 1000;
 			}
 			fps++;
 			
 			try {
-				Thread.sleep( (lastLoopTime-Time.getTime() + OPTIMAL_TIME)/1000000 );
+				Thread.sleep((lastLoopTime-Time.getTime() + OPTIMAL_TIME)/1000000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

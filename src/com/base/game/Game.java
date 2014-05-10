@@ -45,7 +45,7 @@ public class Game {
 			Display.sync(60);
 			
 			if(Time.getTime() - lastFPS > 1000){
-				System.out.println("FPS: " + fps);
+//				System.out.println("FPS: " + fps);
 				fps = 0;
 				lastFPS += 1000;
 			}
@@ -63,6 +63,10 @@ public class Game {
 	
 	public void update(){
 		world.update();
+	}
+	
+	public void tick(){
+		world.tick();
 	}
 	
 	public void render(){
