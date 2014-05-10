@@ -15,11 +15,13 @@ public class World {
 	}
 	
 	public void update(){
-		for(Map.Entry<Vector2f, Chunk> entry : worldChunks.entrySet()){
-			entry.getValue().update();
-		}
-		
 		player.update();
+	}
+	
+	public void tick(){
+		for(Map.Entry<Vector2f, Chunk> entry : worldChunks.entrySet()){
+			entry.getValue().tick();
+		}
 	}
 	
 	public void render(){

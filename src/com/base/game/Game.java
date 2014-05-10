@@ -6,11 +6,13 @@ import org.lwjgl.opengl.Display;
 
 import com.base.game.render.TextureMap;
 import com.base.game.render.Window;
+import com.base.game.update.UpdateJob;
 
 public class Game {
-	public boolean isRunning;
+	public boolean isRunning = true;
 	
 	public static World world;
+	
 	
 	public Game(int width, int height, String title){
 		world = new World();
@@ -22,18 +24,22 @@ public class Game {
 	public void start(){
 		world.addChunk(0, 0);
 		world.getPlayer().position.z = -1;
+		
+		UpdateJob updateJob = new UpdateJob(this);
+		Thread updateThread = new Thread(updateJob);
+		updateThread.start();
+		
 		gameLoop();
 	}
 	
 	public void gameLoop(){
 		isRunning = true;
 		
+		@SuppressWarnings("unused")
 		long fps = 0;
 		long lastFPS = Time.getTime();
 		
 		while(isRunning){
-			input();
-			update();
 			render();
 			Display.sync(60);
 			
@@ -47,6 +53,7 @@ public class Game {
 			if(Window.isCloseRequested())
 				isRunning = false;
 		}
+		
 	}
 	
 	public void input(){
@@ -55,6 +62,10 @@ public class Game {
 	
 	public void update(){
 		world.update();
+	}
+	
+	public void tick(){
+		world.tick();
 	}
 	
 	public void render(){
