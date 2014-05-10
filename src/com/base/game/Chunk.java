@@ -26,7 +26,7 @@ public class Chunk {
 		updateVisibility();
 	}
 	
-	public void update(){
+	public void tick(){
 		
 	}
 	

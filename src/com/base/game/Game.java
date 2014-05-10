@@ -40,6 +40,7 @@ public class Game {
 		
 		while(isRunning){
 			input();
+			update();
 			render();
 			Display.sync(60);
 			

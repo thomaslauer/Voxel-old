@@ -2,18 +2,18 @@ package com.base.game;
 
 public class Time {
 	public static final long SECOND = 1000000000L;
+	
+	public static long deltaTime = 0;
+	
+	public static long getDeltaTime() {
+		return deltaTime;
+	}
 
-	private static double delta;
+	public static void setDeltaTime(long deltaTime) {
+		Time.deltaTime = deltaTime;
+	}
 
 	public static long getTime(){
 		return System.nanoTime() / 1000000;
-	}
-
-	public static double getDelta(){
-		return delta;
-	}
-
-	public static void setDelta(double delta){
-		Time.delta = delta;
 	}
 }
