@@ -57,9 +57,11 @@ public class Render {
 			}
 			if(fr.xup){
 				glTexCoord2f(a,b); glVertex3f(1,0,0);
-				glTexCoord2f(x,b); glVertex3f(1,0,1);
-				glTexCoord2f(x,y); glVertex3f(1,1,1);
 				glTexCoord2f(a,y); glVertex3f(1,1,0);
+				
+				glTexCoord2f(x,y); glVertex3f(1,1,1);
+				glTexCoord2f(x,b); glVertex3f(1,0,1);
+				
 			}
 			if(fr.ydown){
 				glTexCoord2f(x,y); glVertex3f(0,0,0);
@@ -68,9 +70,9 @@ public class Render {
 				glTexCoord2f(x,b); glVertex3f(0,0,1);
 			}
 			if(fr.yup){
-				glTexCoord2f(x,y); glVertex3f(0,1,0);
-				glTexCoord2f(a,y); glVertex3f(1,1,0);
 				glTexCoord2f(a,b); glVertex3f(1,1,1);
+				glTexCoord2f(a,y); glVertex3f(1,1,0);
+				glTexCoord2f(x,y); glVertex3f(0,1,0);
 				glTexCoord2f(x,b); glVertex3f(0,1,1);
 			}
 		}
