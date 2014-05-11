@@ -3,6 +3,7 @@ package com.base.game;
 import org.lwjgl.util.vector.*;
 
 import com.base.game.render.Window;
+import com.base.game.util.Utils;
 
 import static org.lwjgl.opengl.GL11.*;
 

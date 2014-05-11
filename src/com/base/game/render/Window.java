@@ -14,16 +14,18 @@ import static org.lwjgl.util.glu.GLU.gluPerspective;
 public class Window {
 	
 	public static void initWindow(int width, int height, String title){
-		Display.setTitle(title);
+		
 		
 		try{
 			Display.setDisplayMode(new DisplayMode(width, height));
 			Display.create();
+			Display.setTitle(title);
 			Keyboard.create();
 			Mouse.create();
 		}catch(LWJGLException e){
 			e.printStackTrace();
 		}
+		System.out.println(getGLVersion());
 	}
 	
 	public static void initProjection(float fov, float aspectRatio, float nearClipping, float farClipping){
@@ -57,5 +59,9 @@ public class Window {
 	}
 	public static Vector2f getCenter(){
 		return new Vector2f(getWidth()/2, getHeight()/2);
+	}
+	
+	public static String getGLVersion(){
+		return glGetString(GL_VERSION);
 	}
 }

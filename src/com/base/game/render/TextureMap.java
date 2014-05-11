@@ -2,7 +2,7 @@ package com.base.game.render;
 
 import org.newdawn.slick.opengl.Texture;
 
-import com.base.game.Utils;
+import com.base.game.util.Utils;
 
 public class TextureMap {
 	

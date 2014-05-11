@@ -48,7 +48,7 @@ public class Chunk {
 			for(int z = 0; z < 16; z++){
 				for(int y = 0; y < 16; y++){
 					
-					System.out.println("x: " + x + " z: " + z + " y: " + y);
+//					System.out.println("x: " + x + " z: " + z + " y: " + y);
 					
 					if(x != 15){
 						if(blocks[x + 1][z][y].isSolid){
