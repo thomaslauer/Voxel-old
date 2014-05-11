@@ -15,7 +15,7 @@ public class TextureMap {
 		textureMapDimensions = 16;
 		textureMapScale = (float)1/textureMapDimensions;
 		
-		System.out.print("Loading texture");
+		System.out.println("Loading texture");
 		texture = Utils.loadTexture("PNG", textureMap);
 	}
 	

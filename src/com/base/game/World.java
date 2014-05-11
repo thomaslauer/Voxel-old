@@ -6,7 +6,7 @@ import java.util.Map;
 import org.lwjgl.util.vector.Vector2f;
 
 public class World {
-	private Player player;
+	public Player player;
 	private HashMap<Vector2f, Chunk> worldChunks;
 	
 	public World(){

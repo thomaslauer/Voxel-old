@@ -14,7 +14,7 @@ import com.base.game.render.Vertex;
 public class Utils {
 	public static Texture loadTexture(String fileType, String fileName){
 		try {
-			return TextureLoader.getTexture(fileType, ResourceLoader.getResourceAsStream("res/textures" + fileName));
+			return TextureLoader.getTexture(fileType, ResourceLoader.getResourceAsStream("res/textures/" + fileName));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

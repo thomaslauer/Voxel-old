@@ -6,17 +6,20 @@ import org.lwjgl.opengl.Display;
 import org.lwjgl.util.vector.Vector3f;
 
 import com.base.game.render.Mesh;
+import com.base.game.render.Shader;
 import com.base.game.render.TextureMap;
 import com.base.game.render.Vertex;
 import com.base.game.render.Window;
 import com.base.game.update.UpdateJob;
+import com.base.game.util.ResourceLoader;
 
 public class Game {
 	public boolean isRunning = true;
 	
 	public static World world;
 	
-	private Mesh mesh;
+	public static Shader shader;
+	private static Mesh mesh;
 	
 	public Game(int width, int height, String title){
 		world = new World();
@@ -25,7 +28,7 @@ public class Game {
 		
 		//start mesh testing
 		mesh = new Mesh();
-		
+		shader = new Shader();
 		//makes a cube
 		Vertex[] data = new Vertex[] {new Vertex(new Vector3f(1, 0, 0)),
 									  new Vertex(new Vector3f(0, 0, 0)), //front face A
@@ -77,6 +80,9 @@ public class Game {
 		
 		mesh.addVertices(data);
 		//end mesh testing
+		shader.addVertexShader(ResourceLoader.loadShader("basicVertex.vert"));
+		shader.addFragmentShader(ResourceLoader.loadShader("basicFragment.frag"));
+		shader.compileShader();
 		
 		
 		TextureMap.init("TextureMap.png");
@@ -122,6 +128,7 @@ public class Game {
 	
 	public void update(){
 		world.update();
+		world.player.update();
 	}
 	
 	public void tick(){
@@ -133,6 +140,7 @@ public class Game {
 		glLoadIdentity();
 		world.getPlayer().getCamera().useView();
 //		world.render();
+		shader.bind();
 		mesh.draw(); //draw the mesh
 		Window.update();
 	}

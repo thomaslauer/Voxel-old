@@ -57,8 +57,9 @@ public class Shader {
 		
 		if(glGetShader(shader, GL_COMPILE_STATUS) == 0){
 			System.err.println(glGetShaderInfoLog(shader, 1024));
+			System.exit(1);
 		}
 		
-		glAttachShader(shader, program);
+		glAttachShader(program, shader);
 	}
 }
