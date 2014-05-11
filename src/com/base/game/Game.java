@@ -26,9 +26,54 @@ public class Game {
 		//start mesh testing
 		mesh = new Mesh();
 		
-		Vertex[] data = new Vertex[] {new Vertex(new Vector3f(-1, -1, 0)),
+		//makes a cube
+		Vertex[] data = new Vertex[] {new Vertex(new Vector3f(1, 0, 0)),
+									  new Vertex(new Vector3f(0, 0, 0)), //front face A
 									  new Vertex(new Vector3f(0, 1, 0)),
-									  new Vertex(new Vector3f(1, -1, 0))};
+									  
+									  new Vertex(new Vector3f(1, 0, 0)),
+									  new Vertex(new Vector3f(0, 1, 0)), //front face B
+									  new Vertex(new Vector3f(1, 1, 0)),
+									  
+									  new Vertex(new Vector3f(1, 0, 1)),
+									  new Vertex(new Vector3f(0, 1, 1)), //back face A
+									  new Vertex(new Vector3f(0, 0, 1)),
+									  
+									  new Vertex(new Vector3f(1, 0, 1)),
+									  new Vertex(new Vector3f(1, 1, 1)), //back face B
+									  new Vertex(new Vector3f(0, 1, 1)),
+									  
+									  new Vertex(new Vector3f(0, 0, 1)),
+									  new Vertex(new Vector3f(0, 1, 1)), //left face A
+									  new Vertex(new Vector3f(0, 0, 0)),
+									  
+									  new Vertex(new Vector3f(0, 0, 0)),
+									  new Vertex(new Vector3f(0, 1, 1)), //left face B
+									  new Vertex(new Vector3f(0, 1, 0)),
+									  
+									  new Vertex(new Vector3f(1, 0, 1)),
+									  new Vertex(new Vector3f(1, 0, 0)), //right face A
+									  new Vertex(new Vector3f(1, 1, 1)),
+									  
+									  new Vertex(new Vector3f(1, 0, 0)),
+									  new Vertex(new Vector3f(1, 1, 0)), //right face B
+									  new Vertex(new Vector3f(1, 1, 1)),
+									  
+									  new Vertex(new Vector3f(0, 0, 0)),
+									  new Vertex(new Vector3f(1, 0, 0)), //bottom face A
+									  new Vertex(new Vector3f(0, 0, 1)),
+									  
+									  new Vertex(new Vector3f(1, 0, 0)),
+									  new Vertex(new Vector3f(1, 0, 1)), //bottom face B
+									  new Vertex(new Vector3f(0, 0, 1)),
+									  
+									  new Vertex(new Vector3f(0, 1, 0)),
+									  new Vertex(new Vector3f(0, 1, 1)), //top face A
+									  new Vertex(new Vector3f(1, 1, 0)),
+									  
+									  new Vertex(new Vector3f(1, 1, 0)),
+									  new Vertex(new Vector3f(0, 1, 1)), //top face B
+									  new Vertex(new Vector3f(1, 1, 1)),};
 		
 		mesh.addVertices(data);
 		//end mesh testing
@@ -51,7 +96,6 @@ public class Game {
 	public void gameLoop(){
 		isRunning = true;
 		
-		@SuppressWarnings("unused")
 		long fps = 0;
 		long lastFPS = Time.getTime();
 		
@@ -88,8 +132,8 @@ public class Game {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		glLoadIdentity();
 		world.getPlayer().getCamera().useView();
-		world.render();
-		mesh.draw();
+//		world.render();
+		mesh.draw(); //draw the mesh
 		Window.update();
 	}
 }
