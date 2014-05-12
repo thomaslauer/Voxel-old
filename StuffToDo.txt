@@ -1,8 +1,0 @@
-1. CHUNK MANAGMENT
-	a. generate a basic world
-	b. make helpful commands to get relative blocks
-	c. update the faces that need to be rendered
-		i. only when the chunk has an update to save performance
-2. RENDERING
-	a. dont render on the inside of blocks (needs chunks)
-	b. use a texture map

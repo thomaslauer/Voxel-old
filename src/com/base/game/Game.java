@@ -3,12 +3,9 @@ package com.base.game;
 import static org.lwjgl.opengl.GL11.*;
 
 import org.lwjgl.opengl.Display;
-import org.lwjgl.util.vector.Vector3f;
-
 import com.base.game.render.Mesh;
 import com.base.game.render.Shader;
 import com.base.game.render.TextureMap;
-import com.base.game.render.Vertex;
 import com.base.game.render.Window;
 import com.base.game.render.meshes.MeshBlock;
 import com.base.game.update.UpdateJob;
@@ -40,7 +37,7 @@ public class Game {
 	
 	public void start(){
 		world.addChunk(0, 0);
-		world.getPlayer().position.z = -1;
+		world.getPlayer().position.z = -5;
 		
 		UpdateJob updateJob = new UpdateJob(this);
 		Thread updateThread = new Thread(updateJob);

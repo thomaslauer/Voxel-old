@@ -5,6 +5,7 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 
 import com.base.game.*;
+import com.base.game.render.Window;
 
 public class UpdateJob implements Runnable{
 	
@@ -23,7 +24,7 @@ public class UpdateJob implements Runnable{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		Input.setMousePosition(Window.getCenter());
 		System.out.println("starting update loop...");
 		startUpdateLoop();
 	}
