@@ -1,5 +1,7 @@
 package com.base.game;
 
+import com.base.game.render.Camera;
+
 public class Player extends Entity{
 	
 	private Camera camera;

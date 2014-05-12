@@ -1,8 +1,9 @@
-package com.base.game;
+package com.base.game.render;
 
 import org.lwjgl.util.vector.*;
 
-import com.base.game.render.Window;
+import com.base.game.Input;
+import com.base.game.Player;
 import com.base.game.util.Utils;
 
 import static org.lwjgl.opengl.GL11.*;
@@ -17,7 +18,7 @@ public class Camera {
 	private Player player;
 	
 	public Camera(Player player){
-		sensitivity = 0.05f;
+		sensitivity = 0.1f;
 		cursor = false;
 		captureKey = Input.KEY_TAB;
 		releaseKey = Input.KEY_ESCAPE;
