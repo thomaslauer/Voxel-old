@@ -2,7 +2,7 @@ package com.base.game.render;
 
 import org.newdawn.slick.opengl.Texture;
 
-import com.base.game.Utils;
+import com.base.game.util.Utils;
 
 public class TextureMap {
 	
@@ -15,7 +15,7 @@ public class TextureMap {
 		textureMapDimensions = 16;
 		textureMapScale = (float)1/textureMapDimensions;
 		
-		System.out.print("Loading texture");
+		System.out.println("Loading texture");
 		texture = Utils.loadTexture("PNG", textureMap);
 	}
 	

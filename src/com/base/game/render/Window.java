@@ -9,21 +9,22 @@ import org.lwjgl.util.vector.Vector2f;
 
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.util.glu.GLU.gluPerspective;
-
+import static org.lwjgl.opengl.GL30.*;
 
 public class Window {
 	
 	public static void initWindow(int width, int height, String title){
-		Display.setTitle(title);
+		
 		
 		try{
 			Display.setDisplayMode(new DisplayMode(width, height));
 			Display.create();
-			Keyboard.create();
-			Mouse.create();
+			Display.setTitle(title);
+			
 		}catch(LWJGLException e){
 			e.printStackTrace();
 		}
+		System.out.println(getGLVersion());
 	}
 	
 	public static void initProjection(float fov, float aspectRatio, float nearClipping, float farClipping){
@@ -31,13 +32,14 @@ public class Window {
 		glLoadIdentity();
 		gluPerspective(fov, aspectRatio, nearClipping, farClipping);
 		glMatrixMode(GL_MODELVIEW);
-		glClearColor(0.2f, 0.2f, 0.9f, 1f);
+		
 		glEnable(GL_DEPTH_TEST);
 		glEnable(GL_TEXTURE_2D);
 		glEnable(GL_CULL_FACE);
-		
+		glEnable(GL_FRAMEBUFFER_SRGB);
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 	}
 	
 	public static void update(){
@@ -57,5 +59,9 @@ public class Window {
 	}
 	public static Vector2f getCenter(){
 		return new Vector2f(getWidth()/2, getHeight()/2);
+	}
+	
+	public static String getGLVersion(){
+		return glGetString(GL_VERSION);
 	}
 }

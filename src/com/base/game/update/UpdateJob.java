@@ -1,5 +1,9 @@
 package com.base.game.update;
 
+import org.lwjgl.LWJGLException;
+import org.lwjgl.input.Keyboard;
+import org.lwjgl.input.Mouse;
+
 import com.base.game.*;
 
 public class UpdateJob implements Runnable{
@@ -12,6 +16,15 @@ public class UpdateJob implements Runnable{
 		this.game = game;
 	}
 	public void run(){
+		try {
+			Keyboard.create();
+			Mouse.create();
+		} catch (LWJGLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		System.out.println("starting update loop...");
 		startUpdateLoop();
 	}
 	
