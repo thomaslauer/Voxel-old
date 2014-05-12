@@ -10,6 +10,7 @@ import com.base.game.render.Shader;
 import com.base.game.render.TextureMap;
 import com.base.game.render.Vertex;
 import com.base.game.render.Window;
+import com.base.game.render.meshes.MeshBlock;
 import com.base.game.update.UpdateJob;
 import com.base.game.util.ResourceLoader;
 
@@ -27,59 +28,8 @@ public class Game {
 		Window.initProjection(70, (float)Window.getWidth()/(float)Window.getHeight(), 0.1f, 1000);
 		
 		//start mesh testing
-		mesh = new Mesh();
+		mesh = new MeshBlock();
 		shader = new Shader();
-		//makes a cube
-		Vertex[] data = new Vertex[] {new Vertex(new Vector3f(1, 0, 0)),
-									  new Vertex(new Vector3f(0, 0, 0)), //front face A
-									  new Vertex(new Vector3f(0, 1, 0)),
-									  
-									  new Vertex(new Vector3f(1, 0, 0)),
-									  new Vertex(new Vector3f(0, 1, 0)), //front face B
-									  new Vertex(new Vector3f(1, 1, 0)),
-									  
-									  new Vertex(new Vector3f(1, 0, 1)),
-									  new Vertex(new Vector3f(0, 1, 1)), //back face A
-									  new Vertex(new Vector3f(0, 0, 1)),
-									  
-									  new Vertex(new Vector3f(1, 0, 1)),
-									  new Vertex(new Vector3f(1, 1, 1)), //back face B
-									  new Vertex(new Vector3f(0, 1, 1)),
-									  
-									  new Vertex(new Vector3f(0, 0, 1)),
-									  new Vertex(new Vector3f(0, 1, 1)), //left face A
-									  new Vertex(new Vector3f(0, 0, 0)),
-									  
-									  new Vertex(new Vector3f(0, 0, 0)),
-									  new Vertex(new Vector3f(0, 1, 1)), //left face B
-									  new Vertex(new Vector3f(0, 1, 0)),
-									  
-									  new Vertex(new Vector3f(1, 0, 1)),
-									  new Vertex(new Vector3f(1, 0, 0)), //right face A
-									  new Vertex(new Vector3f(1, 1, 1)),
-									  
-									  new Vertex(new Vector3f(1, 0, 0)),
-									  new Vertex(new Vector3f(1, 1, 0)), //right face B
-									  new Vertex(new Vector3f(1, 1, 1)),
-									  
-									  new Vertex(new Vector3f(0, 0, 0)),
-									  new Vertex(new Vector3f(1, 0, 0)), //bottom face A
-									  new Vertex(new Vector3f(0, 0, 1)),
-									  
-									  new Vertex(new Vector3f(1, 0, 0)),
-									  new Vertex(new Vector3f(1, 0, 1)), //bottom face B
-									  new Vertex(new Vector3f(0, 0, 1)),
-									  
-									  new Vertex(new Vector3f(0, 1, 0)),
-									  new Vertex(new Vector3f(0, 1, 1)), //top face A
-									  new Vertex(new Vector3f(1, 1, 0)),
-									  
-									  new Vertex(new Vector3f(1, 1, 0)),
-									  new Vertex(new Vector3f(0, 1, 1)), //top face B
-									  new Vertex(new Vector3f(1, 1, 1)),};
-		
-		mesh.addVertices(data);
-		//end mesh testing
 		shader.addVertexShader(ResourceLoader.loadShader("basicVertex.vert"));
 		shader.addFragmentShader(ResourceLoader.loadShader("basicFragment.frag"));
 		shader.compileShader();
@@ -119,7 +69,6 @@ public class Game {
 			if(Window.isCloseRequested())
 				isRunning = false;
 		}
-		
 	}
 	
 	public void input(){
