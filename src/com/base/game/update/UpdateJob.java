@@ -62,7 +62,7 @@ public class UpdateJob implements Runnable{
 			game.tick();
 			
 			if(Time.getTime() - lastFPS > 1000){
-//				System.out.println("TPS: " + fps);
+				System.out.println("TPS: " + fps);
 				fps = 0;
 				lastFPS += 1000;
 			}

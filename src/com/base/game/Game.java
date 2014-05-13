@@ -57,7 +57,8 @@ public class Game {
 		
 		while(isRunning){
 			render();
-			Display.sync(60);
+			
+			Display.setVSyncEnabled(true);
 			
 			if(Time.getTime() - lastFPS > 1000){
 				System.out.println("FPS: " + fps);

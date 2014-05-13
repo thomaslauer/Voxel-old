@@ -24,6 +24,7 @@ public class Chunk {
 				}
 			}
 		}
+		updateVisibility();
 	}
 	
 	public void tick(){
@@ -49,64 +50,14 @@ public class Chunk {
 					
 //					System.out.println("x: " + x + " z: " + z + " y: " + y);
 					
-					if(x != 15){
-						if(blocks[x + 1][z][y].isSolid){
-							blocks[x][z][y].faceRender.xup = false;
-						}else{
-							blocks[x][z][y].faceRender.xup = true;
-						}
+					try{
+					if(blocks[x+1][z][y].isSolid && blocks[x-1][z][y].isSolid && blocks[x][z+1][y].isSolid && blocks[x][z-1][y].isSolid && blocks[x][z][y+1].isSolid && blocks[x-1][z][y-1].isSolid){
+						blocks[x][z][y].doRender = false;
 					}else{
-						blocks[x][z][y].faceRender.xup = true;
+						blocks[x][z][y].doRender = true;
 					}
-					
-					if(z != 15){
-						if(blocks[x][z + 1][y].isSolid){
-							blocks[x][z][y].faceRender.yup = false;
-						}else{
-							blocks[x][z][y].faceRender.yup = true;
-						}
-					}else{
-						blocks[x][z][y].faceRender.yup = true;
-					}
-					
-					if(y != 15){	
-						if(blocks[x][z][y + 1].isSolid){
-							blocks[x][z][y].faceRender.zdown = false;
-						}else{
-							blocks[x][z][y].faceRender.zdown = true;
-						}
-					}else{
-						blocks[x][z][y].faceRender.zdown = true;
-					}
-					
-					if(x != 0){
-						if(blocks[x - 1][z][y].isSolid){
-							blocks[x][z][y].faceRender.xdown = false;
-						}else{
-							blocks[x][z][y].faceRender.xdown = true;
-						}
-					}else{
-						blocks[x][z][y].faceRender.xdown = true;
-					}
-					
-					if(z != 0){
-						if(blocks[x][z - 1][y].isSolid){
-							blocks[x][z][y].faceRender.ydown = false;
-						}else{
-							blocks[x][z][y].faceRender.ydown = true;
-						}
-					}else{
-						blocks[x][z][y].faceRender.ydown = true;
-					}
-					
-					if(y != 0){
-						if(blocks[x][z][y - 1].isSolid){
-							blocks[x][z][y].faceRender.zup = false;
-						}else{
-							blocks[x][z][y].faceRender.zup = true;
-						}
-					}else{
-						blocks[x][z][y].faceRender.zup = true;
+					}catch(ArrayIndexOutOfBoundsException ex){
+						blocks[x][z][y].doRender = true;
 					}
 				}
 			}

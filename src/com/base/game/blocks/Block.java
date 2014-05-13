@@ -3,7 +3,6 @@ package com.base.game.blocks;
 import org.lwjgl.util.vector.Vector2f;
 import org.lwjgl.util.vector.Vector3f;
 
-import com.base.game.render.FaceRender;
 import com.base.game.render.Mesh;
 import com.base.game.render.Render;
 import com.base.game.render.meshes.MeshBlock;
@@ -12,8 +11,9 @@ public abstract class Block {
 	public Vector3f position;
 	
 	public Vector2f texture = new Vector2f(0, 0);
-	public FaceRender faceRender = new FaceRender();
 	public boolean isSolid = true;
+	
+	public boolean doRender = true;
 	
 	public Mesh mesh;
 	
