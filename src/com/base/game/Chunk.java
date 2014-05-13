@@ -2,6 +2,7 @@ package com.base.game;
 
 import org.lwjgl.util.vector.Vector2f;
 
+import com.base.game.blocks.Block;
 import com.base.game.blocks.BlockStone;
 
 
@@ -23,7 +24,6 @@ public class Chunk {
 				}
 			}
 		}
-		updateVisibility();
 	}
 	
 	public void tick(){
@@ -32,7 +32,6 @@ public class Chunk {
 	
 	public void render(){
 		
-		blocks[0][0][0].render();
 		
 		for(int x = 0; x < 16; x++){
 			for(int z = 0; z < 16; z++){

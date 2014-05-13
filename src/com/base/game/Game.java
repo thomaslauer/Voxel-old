@@ -3,6 +3,8 @@ package com.base.game;
 import static org.lwjgl.opengl.GL11.*;
 
 import org.lwjgl.opengl.Display;
+
+import com.base.game.blocks.Block;
 import com.base.game.render.Mesh;
 import com.base.game.render.Shader;
 import com.base.game.render.TextureMap;
@@ -18,6 +20,8 @@ public class Game {
 	
 	public static Shader shader;
 	private static Mesh mesh;
+	private Block tempBlock;
+	
 	
 	public Game(int width, int height, String title){
 		world = new World();
@@ -30,7 +34,6 @@ public class Game {
 		shader.addVertexShader(ResourceLoader.loadShader("basicVertex.vert"));
 		shader.addFragmentShader(ResourceLoader.loadShader("basicFragment.frag"));
 		shader.compileShader();
-		
 		
 		TextureMap.init("TextureMap.png");
 	}
@@ -85,9 +88,10 @@ public class Game {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		glLoadIdentity();
 		world.getPlayer().getCamera().useView();
-//		world.render();
 		shader.bind();
-		mesh.draw(); //draw the mesh
+		world.render();
+		
+//		mesh.draw(); //draw the mesh
 		Window.update();
 	}
 }

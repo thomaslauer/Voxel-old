@@ -2,8 +2,6 @@ package com.base.game.blocks;
 
 import org.lwjgl.util.vector.Vector2f;
 
-import com.base.game.Block;
-
 public class BlockStone extends Block{
 	
 	static {
