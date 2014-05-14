@@ -1,4 +1,4 @@
-package com.base.game;
+package com.base.game.util;
 
 public class Time {
 	public static final long SECOND = 1000000000L;

@@ -2,6 +2,8 @@ package com.base.game;
 
 import static org.lwjgl.opengl.GL11.*;
 
+import java.util.Timer;
+
 import org.lwjgl.opengl.Display;
 
 import com.base.game.blocks.Block;
@@ -10,8 +12,8 @@ import com.base.game.render.Shader;
 import com.base.game.render.TextureMap;
 import com.base.game.render.Window;
 import com.base.game.render.meshes.MeshBlock;
-import com.base.game.update.UpdateJob;
 import com.base.game.util.ResourceLoader;
+import com.base.game.util.Time;
 
 public class Game {
 	public boolean isRunning = true;
@@ -42,10 +44,6 @@ public class Game {
 		world.addChunk(0, 0);
 		world.getPlayer().position.z = -5;
 		
-		UpdateJob updateJob = new UpdateJob(this);
-		Thread updateThread = new Thread(updateJob);
-		updateThread.start();
-		
 		gameLoop();
 	}
 	
@@ -56,6 +54,9 @@ public class Game {
 		long lastFPS = Time.getTime();
 		
 		while(isRunning){
+			
+			input();
+			update();
 			render();
 			
 			Display.setVSyncEnabled(true);
