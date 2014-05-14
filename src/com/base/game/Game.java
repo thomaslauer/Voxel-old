@@ -4,14 +4,11 @@ import static org.lwjgl.opengl.GL11.*;
 
 import org.lwjgl.opengl.Display;
 
-import com.base.game.blocks.Block;
-import com.base.game.render.Mesh;
 import com.base.game.render.Shader;
 import com.base.game.render.TextureMap;
 import com.base.game.render.Window;
-import com.base.game.render.meshes.MeshBlock;
-import com.base.game.update.UpdateJob;
 import com.base.game.util.ResourceLoader;
+import com.base.game.util.Time;
 
 public class Game {
 	public boolean isRunning = true;
@@ -19,17 +16,10 @@ public class Game {
 	public static World world;
 	
 	public static Shader shader;
-	private static Mesh mesh;
-	private Block tempBlock;
-	
-	
 	public Game(int width, int height, String title){
 		world = new World();
 		Window.initWindow(width, height, title);
 		Window.initProjection(70, (float)Window.getWidth()/(float)Window.getHeight(), 0.1f, 1000);
-		
-		//start mesh testing
-		mesh = new MeshBlock();
 		shader = new Shader();
 		shader.addVertexShader(ResourceLoader.loadShader("basicVertex.vert"));
 		shader.addFragmentShader(ResourceLoader.loadShader("basicFragment.frag"));
@@ -42,12 +32,10 @@ public class Game {
 		world.addChunk(0, 0);
 		world.getPlayer().position.z = -5;
 		
-		UpdateJob updateJob = new UpdateJob(this);
-		Thread updateThread = new Thread(updateJob);
-		updateThread.start();
-		
 		gameLoop();
 	}
+	
+	public boolean capFPS = true;
 	
 	public void gameLoop(){
 		isRunning = true;
@@ -56,9 +44,13 @@ public class Game {
 		long lastFPS = Time.getTime();
 		
 		while(isRunning){
+			tick();
+			input();
+			update();
 			render();
 			
-			Display.setVSyncEnabled(true);
+			if(capFPS)
+				Display.setVSyncEnabled(true);
 			
 			if(Time.getTime() - lastFPS > 1000){
 				System.out.println("FPS: " + fps);
