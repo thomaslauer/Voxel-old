@@ -54,7 +54,7 @@ public class Game {
 		long lastFPS = Time.getTime();
 		
 		while(isRunning){
-			
+			tick();
 			input();
 			update();
 			render();
