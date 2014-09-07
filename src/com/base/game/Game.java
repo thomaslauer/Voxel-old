@@ -16,6 +16,7 @@ public class Game {
 	public static World world;
 	
 	public static Shader shader;
+	
 	public Game(int width, int height, String title){
 		world = new World();
 		Window.initWindow(width, height, title);
@@ -84,7 +85,6 @@ public class Game {
 		shader.bind();
 		world.render();
 		
-//		mesh.draw(); //draw the mesh
 		Window.update();
 	}
 }
