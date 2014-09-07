@@ -1,70 +1,77 @@
 package com.base.game;
 
 import org.lwjgl.util.vector.Vector2f;
+import org.lwjgl.util.vector.Vector3f;
 
 import com.base.game.blocks.Block;
 import com.base.game.blocks.BlockStone;
+import com.base.game.render.Mesh;
+import com.base.game.render.Vertex;
 
 
 public class Chunk {
-	public Block[][][] blocks;
+	public int[][][] blocks;
 	
 	public Vector2f position;
 	
-	public Chunk(Vector2f position){
-		
+	public Mesh chunkMesh;
+	
+	public Chunk(Vector2f position)
+	{
+		blocks = new int[16][16][16];
 		this.position = position;
 		
-		blocks = new Block[16][16][16]; //not like normal, it is x, z, y
+		chunkMesh = new Mesh();
 		
-		for(int x = 0; x < 16; x++){
-			for(int z = 0; z < 16; z++){
-				for(int y = 0; y < 16; y++){
-					blocks[x][z][y] = new BlockStone(x, z, y).setTexture(new Vector2f(1, 0));
+		for(int x = 0; x < 16; x++)
+		{
+			for(int y = 0; y < 16; y++)
+			{
+				for(int z = 0; z < 16; z++)
+				{
+					blocks[x][y][z] = BlockStone.dataValue;
 				}
 			}
 		}
-		updateVisibility();
+		updateMesh();
 	}
 	
-	public void tick(){
+	public void updateMesh()
+	{
+		chunkMesh.addVertex(new Vertex(new Vector3f(0 , 0, 1)));
+		chunkMesh.addVertex(new Vertex(new Vector3f(1, 0, 1))); // front face A
+		chunkMesh.addVertex(new Vertex(new Vector3f(0, 1, 1)));
+		
+		chunkMesh.addVertex(new Vertex(new Vector3f(1, 0, 1)));
+		chunkMesh.addVertex(new Vertex(new Vector3f(1, 1, 1))); // front face B
+		chunkMesh.addVertex(new Vertex(new Vector3f(0, 1, 1)));
+		
+		chunkMesh.addVertex(new Vertex(new Vector3f(1, 0, 0)));
+		chunkMesh.addVertex(new Vertex(new Vector3f(0, 0, 0))); // back face A
+		chunkMesh.addVertex(new Vertex(new Vector3f(0, 1, 0)));
+		
+		chunkMesh.addVertex(new Vertex(new Vector3f(1, 0, 0)));
+		chunkMesh.addVertex(new Vertex(new Vector3f(0, 1, 0))); // back face B
+		chunkMesh.addVertex(new Vertex(new Vector3f(1, 1, 0)));
+		
+		
+		
+		chunkMesh.addVertices();
+	}
+	
+	public void tick()
+	{
 		
 	}
 	
-	public void render(){
-		
-		
-		for(int x = 0; x < 16; x++){
-			for(int z = 0; z < 16; z++){
-				for(int y = 0; y < 16; y++){
-					blocks[x][z][y].render();
-				}
-			}
-		}
+	public void render()
+	{
+		chunkMesh.draw();
 	}
+
 	
-	public void updateVisibility(){
-		for(int x = 0; x < 16; x++){
-			for(int z = 0; z < 16; z++){
-				for(int y = 0; y < 16; y++){
-					
-//					System.out.println("x: " + x + " z: " + z + " y: " + y);
-					
-					try{
-					if(blocks[x+1][z][y].isSolid && blocks[x-1][z][y].isSolid && blocks[x][z+1][y].isSolid && blocks[x][z-1][y].isSolid && blocks[x][z][y+1].isSolid && blocks[x-1][z][y-1].isSolid){
-						blocks[x][z][y].doRender = false;
-					}else{
-						blocks[x][z][y].doRender = true;
-					}
-					}catch(ArrayIndexOutOfBoundsException ex){
-						blocks[x][z][y].doRender = true;
-					}
-				}
-			}
-		}
-	}
-	
-	public Block[][][] getBlocks(){
+	public int[][][] getBlocks()
+	{
 		return blocks;
 	}
 }

@@ -13,7 +13,7 @@ public class Render {
 		for(int x = 0; x < 16; x++){
 			for(int z = 0; z < 16; z++){
 				for(int y = 0; y < 16; y++){
-					chunk.blocks[x][z][y].render();
+					//chunk.blocks[x][z][y].render();
 				}
 			}
 		}
@@ -21,13 +21,13 @@ public class Render {
 	}
 	
 	public static void block(Block block){
-		if(block.doRender){
-			glPushMatrix();
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-			glTranslatef(block.position.getX(), block.position.getZ(), block.position.getY());
-			block.mesh.draw();
-			glPopMatrix();
-		}
+//		if(block.doRender){
+//			glPushMatrix();
+//			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+//			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+//			glTranslatef(block.position.getX(), block.position.getZ(), block.position.getY());
+//			block.mesh.draw();
+//			glPopMatrix();
+//		}
 	}
 }

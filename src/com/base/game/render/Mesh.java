@@ -4,15 +4,31 @@ import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL15.*;
 import static org.lwjgl.opengl.GL20.*;
 
+import java.util.ArrayList;
+
 import com.base.game.util.Utils;
 
 public class Mesh {
 	private int vbo;
 	private int size;
 	
+	private ArrayList<Vertex> vertexList;
+	
 	public Mesh(){
 		vbo = glGenBuffers();
 		size = 0;
+		vertexList = new ArrayList<Vertex>();
+	}
+	
+	public void addVertex(Vertex vertex)
+	{
+		vertexList.add(vertex);
+	}
+	
+	public void addVertices()
+	{
+		Vertex[] tempArray = vertexList.toArray(new Vertex[vertexList.size()]);
+		addVertices(tempArray);
 	}
 	
 	public void addVertices(Vertex[] vertices){
