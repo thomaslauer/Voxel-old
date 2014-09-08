@@ -38,7 +38,7 @@ public class Chunk {
 	
 	public void updateMesh()
 	{
-		chunkMesh.addVertex(new Vertex(new Vector3f(0 , 0, 1)));
+		chunkMesh.addVertex(new Vertex(new Vector3f(0, 0, 1)));
 		chunkMesh.addVertex(new Vertex(new Vector3f(1, 0, 1))); // front face A
 		chunkMesh.addVertex(new Vertex(new Vector3f(0, 1, 1)));
 		
