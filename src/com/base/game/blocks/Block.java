@@ -6,6 +6,7 @@ public abstract class Block {
 	public static Vector2f texture = new Vector2f(0, 0);
 	
 	public static boolean isSolid = true;
+	public static boolean renderMesh = true;
 	
 	public static int dataValue;
 }
