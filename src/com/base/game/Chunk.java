@@ -3,7 +3,6 @@ package com.base.game;
 import org.lwjgl.util.vector.Vector2f;
 import org.lwjgl.util.vector.Vector3f;
 
-import com.base.game.blocks.Block;
 import com.base.game.blocks.BlockStone;
 import com.base.game.render.Mesh;
 import com.base.game.render.Vertex;
@@ -33,10 +32,10 @@ public class Chunk {
 				}
 			}
 		}
-		updateMesh();
+		buildMesh();
 	}
 	
-	public void updateMesh()
+	public void buildMesh()
 	{
 		chunkMesh.addVertex(new Vertex(new Vector3f(0, 0, 1)));
 		chunkMesh.addVertex(new Vertex(new Vector3f(1, 0, 1))); // front face A
@@ -54,7 +53,37 @@ public class Chunk {
 		chunkMesh.addVertex(new Vertex(new Vector3f(0, 1, 0))); // back face B
 		chunkMesh.addVertex(new Vertex(new Vector3f(1, 1, 0)));
 		
+		chunkMesh.addVertex(new Vertex(new Vector3f(0, 0, 0)));
+		chunkMesh.addVertex(new Vertex(new Vector3f(0, 0, 1))); // left face A
+		chunkMesh.addVertex(new Vertex(new Vector3f(0, 1, 1)));
 		
+		chunkMesh.addVertex(new Vertex(new Vector3f(0, 1, 0)));
+		chunkMesh.addVertex(new Vertex(new Vector3f(0, 0, 0))); // left face B
+		chunkMesh.addVertex(new Vertex(new Vector3f(0, 1, 1)));
+		
+		chunkMesh.addVertex(new Vertex(new Vector3f(1, 0, 1)));
+		chunkMesh.addVertex(new Vertex(new Vector3f(1, 0, 0))); // right face A
+		chunkMesh.addVertex(new Vertex(new Vector3f(1, 1, 1)));
+		
+		chunkMesh.addVertex(new Vertex(new Vector3f(1, 0, 0)));
+		chunkMesh.addVertex(new Vertex(new Vector3f(1, 1, 0))); // right face B
+		chunkMesh.addVertex(new Vertex(new Vector3f(1, 1, 1)));
+		
+		chunkMesh.addVertex(new Vertex(new Vector3f(0, 1, 0)));
+		chunkMesh.addVertex(new Vertex(new Vector3f(1, 1, 1))); // top face A
+		chunkMesh.addVertex(new Vertex(new Vector3f(1, 1, 0)));
+		
+		chunkMesh.addVertex(new Vertex(new Vector3f(0, 1, 0)));
+		chunkMesh.addVertex(new Vertex(new Vector3f(0, 1, 1))); // top face B
+		chunkMesh.addVertex(new Vertex(new Vector3f(1, 1, 1)));
+		
+		chunkMesh.addVertex(new Vertex(new Vector3f(0, 0, 0)));
+		chunkMesh.addVertex(new Vertex(new Vector3f(1, 0, 0))); // bottom face A
+		chunkMesh.addVertex(new Vertex(new Vector3f(1, 0, 1)));
+		
+		chunkMesh.addVertex(new Vertex(new Vector3f(0, 0, 0)));
+		chunkMesh.addVertex(new Vertex(new Vector3f(1, 0, 1))); // bottom face B
+		chunkMesh.addVertex(new Vertex(new Vector3f(0, 0, 1)));
 		
 		chunkMesh.addVertices();
 	}
