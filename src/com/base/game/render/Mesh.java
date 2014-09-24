@@ -13,6 +13,7 @@ public class Mesh {
 	private int size;
 	
 	private ArrayList<Vertex> vertexList;
+	//TODO: add indices for saving vertices and stuff
 	
 	public Mesh(){
 		vbo = glGenBuffers();
@@ -25,7 +26,7 @@ public class Mesh {
 		vertexList.add(vertex);
 	}
 	
-	public void addVertices()
+	public void updateMesh()
 	{
 		Vertex[] tempArray = vertexList.toArray(new Vertex[vertexList.size()]);
 		addVertices(tempArray);
@@ -38,7 +39,11 @@ public class Mesh {
 		glBufferData(GL_ARRAY_BUFFER, Utils.createFlippedBuffer(vertices), GL_STATIC_DRAW);
 	}
 	
-	public void draw(){
+	//TODO: add method for adding triangles
+	
+	public void draw()
+	{
+		//TODO: add indices for performance
 		glEnableVertexAttribArray(0);
 		
 		glBindBuffer(GL_ARRAY_BUFFER, vbo);
