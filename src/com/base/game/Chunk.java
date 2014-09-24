@@ -35,8 +35,9 @@ public class Chunk {
 		buildMesh();
 	}
 	
-	public void buildMesh()
+	public void buildMesh() 
 	{
+		//TODO: add way to calculate mesh on the fly
 		chunkMesh.addVertex(new Vertex(new Vector3f(0, 0, 1)));
 		chunkMesh.addVertex(new Vertex(new Vector3f(1, 0, 1))); // front face A
 		chunkMesh.addVertex(new Vertex(new Vector3f(0, 1, 1)));
@@ -85,7 +86,7 @@ public class Chunk {
 		chunkMesh.addVertex(new Vertex(new Vector3f(1, 0, 1))); // bottom face B
 		chunkMesh.addVertex(new Vertex(new Vector3f(0, 0, 1)));
 		
-		chunkMesh.addVertices();
+		chunkMesh.updateMesh();
 	}
 	
 	public void tick()
