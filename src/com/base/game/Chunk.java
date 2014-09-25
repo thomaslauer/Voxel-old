@@ -3,7 +3,6 @@ package com.base.game;
 import org.lwjgl.util.vector.Vector2f;
 import org.lwjgl.util.vector.Vector3f;
 
-import com.base.game.blocks.BlockStone;
 import com.base.game.render.Mesh;
 import com.base.game.render.Vertex;
 
@@ -28,7 +27,7 @@ public class Chunk {
 			{
 				for(int z = 0; z < 16; z++)
 				{
-					blocks[x][y][z] = BlockStone.dataValue;
+					blocks[x][y][z] = 1;
 				}
 			}
 		}
