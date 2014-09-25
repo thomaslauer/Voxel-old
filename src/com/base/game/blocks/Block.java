@@ -1,15 +1,15 @@
 package com.base.game.blocks;
 
-import java.util.HashMap;
-
 import org.lwjgl.util.vector.Vector2f;
+
+import com.base.game.util.BlockDoubleHashMap;
 
 public class Block {
 	
-	// HashMap to hold the blocks in their dataValues
-	public static final HashMap<Integer, Block> blockMap = new HashMap<Integer, Block>();
-
+	public static BlockDoubleHashMap blockMap = new BlockDoubleHashMap();
+	
 	public int dataValue = 0;
+	public String name = "";
 	
 	// texture for the particular block
 	private static Vector2f texture = new Vector2f(0, 0);
