@@ -6,6 +6,8 @@ import com.base.game.util.Utils;
 
 public class TextureMap {
 	
+	//TODO: make class non-static for each mesh?
+	
 	public static Texture texture;
 	
 	public static int textureMapDimensions;
