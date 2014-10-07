@@ -4,6 +4,7 @@ import static org.lwjgl.opengl.GL11.*;
 
 import org.lwjgl.opengl.Display;
 
+import com.base.game.blocks.Block;
 import com.base.game.render.Shader;
 import com.base.game.render.TextureMap;
 import com.base.game.render.Window;
@@ -16,6 +17,8 @@ public class Game {
 	public static World world;
 	
 	public static Shader shader;
+	
+	public static boolean printFPS = false;
 	
 	public Game(int width, int height, String title){
 		world = new World();
@@ -30,9 +33,11 @@ public class Game {
 	}
 	
 	public void start(){
+		Block.registerBlocks();
+		
 		world.addChunk(0, 0);
 		world.getPlayer().position.z = -5;
-		
+		Input.setMousePosition(Window.getCenter());
 		gameLoop();
 	}
 	
@@ -42,7 +47,9 @@ public class Game {
 		isRunning = true;
 		
 		long fps = 0;
-		long lastFPS = Time.getTime();
+		long lastFPS = 0;
+		
+		double lastTime = Time.getTime();
 		
 		while(isRunning){
 			tick();
@@ -50,11 +57,15 @@ public class Game {
 			update();
 			render();
 			
+			Time.deltaTime = Time.getTime() - lastTime;
+			lastTime = Time.getTime();
+			
 			if(capFPS)
 				Display.setVSyncEnabled(true);
 			
 			if(Time.getTime() - lastFPS > 1000){
-				System.out.println("FPS: " + fps);
+				if(printFPS)
+					//System.out.println("FPS: " + fps);
 				fps = 0;
 				lastFPS += 1000;
 			}

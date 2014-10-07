@@ -3,9 +3,9 @@ package com.base.game.util;
 public class Time {
 	public static final long SECOND = 1000000000L;
 	
-	public static long deltaTime = 0;
+	public static double deltaTime = 0;
 	
-	public static long getDeltaTime() {
+	public static double getDeltaTime() {
 		return deltaTime;
 	}
 
@@ -13,7 +13,7 @@ public class Time {
 		Time.deltaTime = deltaTime;
 	}
 
-	public static long getTime(){
+	public static double getTime(){
 		return System.nanoTime() / 1000000;
 	}
 }

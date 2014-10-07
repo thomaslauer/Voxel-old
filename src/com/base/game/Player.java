@@ -1,6 +1,7 @@
 package com.base.game;
 
 import com.base.game.render.Camera;
+import com.base.game.util.Time;
 
 public class Player extends Entity{
 	
@@ -13,17 +14,17 @@ public class Player extends Entity{
 	
 	public void update(){
 		if(Input.getKey(Input.KEY_W))
-			moveZ(0.05f);
+			moveZ((float) (0.005 * Time.getDeltaTime()));
 		if(Input.getKey(Input.KEY_S))
-			moveZ(-0.05f);
+			moveZ((float) (-0.005 * Time.getDeltaTime()));
 		if(Input.getKey(Input.KEY_A))
-			moveX(0.05f);
+			moveX((float) (0.005 * Time.getDeltaTime()));
 		if(Input.getKey(Input.KEY_D))
-			moveX(-0.05f);
+			moveX((float) (-0.005 * Time.getDeltaTime()));
 		if(Input.getKey(Input.KEY_SPACE))
-			moveY(-0.05f);
+			moveY((float) (-0.005 * Time.getDeltaTime()));
 		if(Input.getKey(Input.KEY_LSHIFT))
-			moveY(0.05f);
+			moveY((float) (0.005 * Time.getDeltaTime()));
 		camera.update();
 	}
 	

@@ -17,6 +17,7 @@ public class BlockDoubleHashMap {
 	// puts a block into both of the HashMaps
 	public synchronized void addBlock(int dataValue, String name, Block block)
 	{
+		System.out.println("Adding block " + name + " with data value of " + dataValue);
 		dataValueMap.put(dataValue, block);
 		nameMap.put(name, block);
 		block.dataValue = dataValue;
